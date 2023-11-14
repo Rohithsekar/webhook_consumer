@@ -17,8 +17,10 @@ public class OrderWeighterQueue extends PriorityQueue<Order> {
             System.out.println(this.toString());
             //This condition becomes true when the current ORDER object has more priority than the
             //Head element of the priority queue.
-            if (comparator().compare(order, currentorder) < 0) {
-                System.out.println(order.toString());
+            int k =comparator().compare(order, currentorder);
+            System.out.println("The order delivery location is " + order.getDeliveryLocation() + ". currentOrder delivery location is " + currentorder.getDeliveryLocation() + " The difference is between order and currentOrder is " + k);
+            if (k < 0) {
+//                System.out.println(order.toString());
                 // If the new student has higher priority, insert it before the existing student
                 super.remove(currentorder);
                 super.offer(order);

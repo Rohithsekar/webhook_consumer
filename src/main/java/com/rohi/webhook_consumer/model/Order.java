@@ -57,15 +57,18 @@ public class Order implements Comparator<Order> {
     @Override
     public int compare(Order order1, Order order2) {
         // Check proximity to the warehouse location in the English alphabet
+//        System.out.println(order1.getDeliveryLocation());
+//        System.out.println(order2.getDeliveryLocation());
         int proximity1 = Math.abs(order1.getDeliveryLocation().charAt(0) - WAREHOUSE_LOCATION.charAt(0));
         int proximity2 = Math.abs(order2.getDeliveryLocation().charAt(0) - WAREHOUSE_LOCATION.charAt(0));
 
         // Compare proximity
         if (proximity1 != proximity2) {
-            return Integer.compare(proximity1, proximity2);
+            int i= Integer.compare(proximity1, proximity2);
+            return i;
         }
 
-        // If the delivery locations are the same, compare timestamps
+        // If the delivery locations are the same, compare ids
         return Integer.compare(order1.getId(), order2.getId());
     }
 

@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Queue;
@@ -33,11 +34,14 @@ public class WebhookConsumerApplication {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		}
 
+		String deliveryLocations[] = {"Chennai", "Delhi", "Hyderabad", "Florida", "Zurich", "Hamburg"};
 		// Process the payloadx
 		Queue<Order> orderQueue = new OrderWeighterQueue(Order.builder().build());
 		for (Order order : orders) {
 			orderQueue.offer(order);
 		}
+
+		System.out.println(Arrays.toString(orderQueue.toArray()));
 
 		return ResponseEntity.status(HttpStatus.OK).body(orderQueue);
 	}
