@@ -8,7 +8,7 @@ public class Order implements Comparator<Order> {
     private Integer id;
     private Long timestamp;
     private String deliveryLocation ;
-    private static final String WAREHOUSE_LOCATION = "Guindy";
+    private static final String STATIC_WAREHOUSE_LOCATION = "Guindy";
 
     public Integer getId() {
         return id;
@@ -35,7 +35,7 @@ public class Order implements Comparator<Order> {
     }
 
     public String getWarehouseLocation() {
-        return WAREHOUSE_LOCATION;
+        return STATIC_WAREHOUSE_LOCATION;
     }
 
     @Override
@@ -59,8 +59,8 @@ public class Order implements Comparator<Order> {
         // Check proximity to the warehouse location in the English alphabet
 //        System.out.println(order1.getDeliveryLocation());
 //        System.out.println(order2.getDeliveryLocation());
-        int proximity1 = Math.abs(order1.getDeliveryLocation().charAt(0) - WAREHOUSE_LOCATION.charAt(0));
-        int proximity2 = Math.abs(order2.getDeliveryLocation().charAt(0) - WAREHOUSE_LOCATION.charAt(0));
+        int proximity1 = Math.abs(order1.getDeliveryLocation().charAt(0) - STATIC_WAREHOUSE_LOCATION.charAt(0));
+        int proximity2 = Math.abs(order2.getDeliveryLocation().charAt(0) - STATIC_WAREHOUSE_LOCATION.charAt(0));
 
         // Compare proximity
         if (proximity1 != proximity2) {
